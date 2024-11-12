@@ -33,7 +33,8 @@ apt-get update && \
 apt-get install -y --no-install-recommends azure-cli && \
 rm -rf /var/lib/apt/lists/*
 
-RUN chsh -s /bin/zsh root
+RUN chsh -s /bin/zsh root && \
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 RUN wget --progress=dot:mega https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
     unzip -o terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
