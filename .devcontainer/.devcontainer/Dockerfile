@@ -9,14 +9,11 @@ ARG AZ_DIST=bookworm
 #install some basic stuff
 RUN  apt-get update && \
 apt-get install -y --no-install-recommends \
-iputils-ping \
-iproute2 \
 curl \
 wget \
 git \
 unzip \
 zsh \
-python3 \
 libicu-dev \
 build-essential \
 apt-transport-https \ 
