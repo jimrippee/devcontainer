@@ -24,18 +24,15 @@ ca-certificates \
 gnupg \
 lsb-release && \
 mkdir -p /etc/apt/keyrings && \
-rm -rf /var/lib/apt/lists/* && \
-curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor -o /etc/apt/keyrings/microsoft.gpg
-
-RUN echo "Types: deb\n\
+curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor -o /etc/apt/keyrings/microsoft.gpg && \
+echo "Types: deb\n\
 URIs: https://packages.microsoft.com/repos/azure-cli/\n\
 Suites: ${AZ_DIST}\n\
 Components: main\n\
 Architectures: $(dpkg --print-architecture)\n\
 Signed-By: /etc/apt/keyrings/microsoft.gpg" \
-> /etc/apt/sources.list.d/azure-cli.sources
-
-RUN apt-get update && \
+> /etc/apt/sources.list.d/azure-cli.sources && \
+apt-get update && \
 apt-get install -y --no-install-recommends azure-cli && \
 rm -rf /var/lib/apt/lists/*
 
