@@ -41,7 +41,6 @@ RUN wget --progress=dot:mega https://releases.hashicorp.com/terraform/${TERRAFOR
     chmod +x /usr/local/bin/terraform && \
     terraform --version && \ 
     rm terraform_${TERRAFORM_VERSION}_linux_amd64.zip
-    
 
 RUN wget --progress=dot:mega https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip && \
     unzip -o packer_${PACKER_VERSION}_linux_amd64.zip && \
